@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+attendance.db
+dataset/*
+!dataset/.gitkeep
+models/*
+!models/.gitkeep

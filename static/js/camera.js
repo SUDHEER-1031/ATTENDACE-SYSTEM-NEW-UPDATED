@@ -1,0 +1,3 @@
+const v=document.getElementById('video'),c=document.getElementById('canvas');
+document.getElementById('startCamera').onclick=async()=>{try{v.srcObject=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});document.getElementById('capture').disabled=false}catch(e){alert('Camera permission was denied or no camera is available.')}};
+document.getElementById('capture').onclick=async()=>{c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);let r=await fetch(window.captureConfig.saveUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({image:c.toDataURL('image/jpeg',.9)})});let d=await r.json();document.getElementById('saved').textContent=d.saved?`Saved photo ${d.saved}`:d.error};
