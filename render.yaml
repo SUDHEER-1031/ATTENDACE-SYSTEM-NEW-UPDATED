@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: face-attendance-system
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PORT
+        value: 10000
+      - key: PYTHONUNBUFFERED
+        value: 1
